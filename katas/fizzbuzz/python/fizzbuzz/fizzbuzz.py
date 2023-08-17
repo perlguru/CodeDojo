@@ -44,6 +44,10 @@ class FizzBuzz():
 
         53 should return FizzBuzz (contain 5 and 3)
         35 should return FizzBuzzBuzz (contain 3 and 5 and it divided by 5)
+
+        The kata does not describe how we should treat some thing like 535,
+        so we ignore the problem and simply take the kata at its literal 
+        translation
         '''
         value = ""
 
