@@ -12,6 +12,8 @@ def main():
     for number in range(1, 101):
         print(f'{number} => {cut.translate(number)}')
 
+    print('----------')
+
     for number in range(1, 101):
         print(f'{number} => {cut.translate2(number)}')
 
