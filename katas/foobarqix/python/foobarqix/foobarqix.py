@@ -51,6 +51,8 @@ class FooBarQix():
         '''
         Per kata step 2, substitute words for numbers and 0 with * as needed.
         If substitutions have been made, remove anyother digits.
+
+        For a different strategy, we will use regular expresion substution.
         '''
         value = re.sub('3', "Foo", value)
         value = re.sub('5', "Bar", value)
