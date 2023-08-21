@@ -12,3 +12,11 @@ To run the test:
 
 To lint the project:
     find . -type f -name "*.py" | xargs pylint
+
+When starting this kata my first question was how to represent the problem
+in an OO fashiuon. If i was going to tackle the problem directly, I 
+considered represting the dice values in a string. Very simple easy to
+impliment. I decide rather to create a "Die" object that I could 
+potentially use later on (Yahtzee kata?, or others). So this is the thought 
+process behind this design decision. Also I could easily mutate the number 
+of sides on the dice, which seemed like a big reusability point.
