@@ -98,7 +98,7 @@ class Greed(Borg):
         '''
         total = 0
         score = 0
-        for pip in range(1, 7):
+        for pip in [1, 2, 3, 4, 5, 6]:
             count = self.dice.count(pip)
             if count == 2:
                 total += 1
@@ -117,9 +117,9 @@ class Greed(Borg):
         multi = [0, 0, 1, 2, 4, 8]
 
         score = 0
-        # Must check from 6 down to 3
-        for length in reversed(range(3,7)):
-            for pip in range(1, 7):
+        # Must check from 6 down to 3 so that we find highest score
+        for length in [6, 5, 4, 3]:
+            for pip in [1, 2, 3, 4, 5, 6]:
                 if self.dice.count(pip) == length:
                     score += base[pip - 1] * multi[length - 1]
                     # pylint: disable=unused-variable
