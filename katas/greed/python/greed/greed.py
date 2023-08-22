@@ -67,7 +67,7 @@ class Greed(Borg):
             raise ValueError
 
         # pylint: disable=unused-variable
-        for die in range(1, count + 1):
+        for die in range(0, count):
             self.dice.append(random.randint(1, 6))
 
     def score(self):
@@ -123,7 +123,7 @@ class Greed(Borg):
                 if self.dice.count(pip) == length:
                     score += base[pip - 1] * multi[length - 1]
                     # pylint: disable=unused-variable
-                    for die in range(1, length + 1):
+                    for die in range(0, length):
                         self.dice.remove(pip)
         return score
 
