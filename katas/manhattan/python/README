@@ -1,0 +1,19 @@
+This is an implementation of the Manhattan Distance written in python using 
+an object oriented + test driven development approach.
+
+When I read the kata the first time, I thought to myself, python does not 
+support private variables or immutable class/instances. I did a little research
+and found that these can be simulated. So I used @dataclass(frozen=True) to
+accomplish the majority of the task and underscore+underscore to finish it off.
+
+Python: 3.11.4
+Packages: pytest, pylint
+
+To run the application:
+    python app.py
+
+To run the test:
+    pytest
+
+To lint the project:
+    find . -type f -name "*.py" | xargs pylint
