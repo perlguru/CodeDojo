@@ -1,0 +1,14 @@
+This is an implementation of the Roman Numerals kata written in python using 
+an object oriented + test driven development approach.
+
+Python: 3.11.4
+Packages: pytest, pylint
+
+To run the application:
+    python app.py
+
+To run the test:
+    pytest
+
+To lint the project:
+    find . -type f -name "*.py" | xargs pylint
