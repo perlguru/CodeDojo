@@ -56,7 +56,6 @@ class Roman():
             for value, replace in TO_DIGITS_LUT.items():
                 if remaining.startswith(value):
                     digits += replace
-                    print(remaining, value, digits)
                     remaining = remaining.replace(value, '', 1)
 
         return digits
@@ -71,7 +70,6 @@ class Roman():
             for value, replace in TO_ROMAN_LUT.items():
                 if remaining >= value:
                     letters += replace
-#                    print(remaining, value, letters)
                     remaining -= value
                     break
 
