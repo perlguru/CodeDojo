@@ -1,6 +1,11 @@
 This is an implementation of the Roman Numerals kata written in python using 
 an object oriented + test driven development approach.
 
+The main time sink on this kata was test. I used:
+https://www.calculateme.com/roman-numerals/to-roman 
+and
+https://www.calculateme.com/roman-numerals/from-roman
+
 Python: 3.11.4
 Packages: pytest, pylint
 
