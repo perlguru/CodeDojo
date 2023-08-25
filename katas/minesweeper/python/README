@@ -12,3 +12,10 @@ To run the test:
 
 To lint the project:
     find . -type f -name "*.py" | xargs pylint
+
+I modified the input structure somewhat. 
+I store the boards in tests/data/*.ms files. 
+I store only 1 board per file.
+The first line of each file contains the height and width of the board.
+The next "height" lines contain mine/safe info where '* == mine, and '.' == safe
+There is no need of the "0 0" termination line.
