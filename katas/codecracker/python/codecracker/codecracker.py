@@ -31,7 +31,12 @@ class Decode():
         '''
         decrypted = ""
         for letter in secret:
-            decrypted += alphabet[key.key.index(letter)]
+            try:
+                nextchar = alphabet[key.key.index(letter)]
+            except ValueError:
+                nextchar = letter
+
+            decrypted += nextchar
 
         return decrypted
 
@@ -46,6 +51,11 @@ class Encode():
         '''
         encrypted = ""
         for letter in message:
-            encrypted += key.key[alphabet.index(letter)]
+            try:
+                nextchar = key.key[alphabet.index(letter)]
+            except ValueError:
+                nextchar = letter 
+
+            encrypted += nextchar
 
         return encrypted

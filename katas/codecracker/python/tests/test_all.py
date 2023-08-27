@@ -38,8 +38,8 @@ class TestCodeCracker:
         key = Key()
         key.set_key("".join(alphabet[::-1]))
         encoder = Encode()
-        secret = encoder.encode(key, 'helloworld')
-        assert secret == 'svooldliow'
+        secret = encoder.encode(key, 'hello, world.')
+        assert secret == 'svool, dliow.'
 
     def test_deeode(self):
         '''
@@ -48,5 +48,5 @@ class TestCodeCracker:
         key = Key()
         key.set_key("".join(alphabet[::-1]))
         decoder = Decode()
-        message = decoder.decode(key, 'svooldliow')
-        assert message == 'helloworld'
+        message = decoder.decode(key, 'svool, dliow.')
+        assert message == 'hello, world.'
