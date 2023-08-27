@@ -2,7 +2,7 @@
 The Code Cracker kata written in object oriented fashion.
 '''
 
-alphabet = list('abcdefghijklmnopqrstuvwxyz')
+alphabet = list('AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz')
 
 # pylint: disable=too-few-public-methods
 class Key():
@@ -54,7 +54,7 @@ class Encode():
             try:
                 nextchar = key.key[alphabet.index(letter)]
             except ValueError:
-                nextchar = letter 
+                nextchar = letter
 
             encrypted += nextchar
 
