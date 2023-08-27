@@ -2,7 +2,9 @@
 Test for Code Cracker kata.
 '''
 
-from codecracker.codecracker import Decode, Encode
+from codecracker.codecracker import Decode, Encode, Key, alphabet
+
+
 
 class TestCodeCracker:
     '''
@@ -20,3 +22,31 @@ class TestCodeCracker:
 
         cut = Encode()
         assert isinstance(cut, Encode)
+
+    def test_set_key(self):
+        '''
+        Test key generation. Use a reversed alphabet as the seed
+        '''
+        cut = Key()
+        cut.set_key(alphabet[::-1])
+        assert cut.key == list('zyxwvutsrqponmlkjihgfedcba')
+
+    def test_encode(self):
+        '''
+        Test basic encoding with know values
+        '''
+        key = Key()
+        key.set_key("".join(alphabet[::-1]))
+        encoder = Encode()
+        secret = encoder.encode(key, 'helloworld')
+        assert secret == 'svooldliow'
+
+    def test_deeode(self):
+        '''
+        Test basic decoding with know values
+        '''
+        key = Key()
+        key.set_key("".join(alphabet[::-1]))
+        decoder = Decode()
+        message = decoder.decode(key, 'svooldliow')
+        assert message == 'helloworld'
