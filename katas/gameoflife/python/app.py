@@ -2,7 +2,7 @@
 Game of Life kata app
 '''
 
-from life.life import Life
+#from life.life import Life
 
 def main():
     '''
