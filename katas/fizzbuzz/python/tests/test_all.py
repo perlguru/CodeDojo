@@ -18,7 +18,7 @@ class TestFizzBuzz:
         cut = FizzBuzz()
         assert isinstance(cut, FizzBuzz)
 
-    def test_translate(self):
+    def test_translate1(self):
         '''
         Intent:
         Given any number we sholud be able to apply the FizzBuzz rules to get
@@ -32,14 +32,14 @@ class TestFizzBuzz:
         These test should be asily verifable by inspection.
         '''
         cut = FizzBuzz()
-        assert cut.translate(1) == '1'
-        assert cut.translate(3) == 'Fizz'
-        assert cut.translate(5) == 'Buzz'
-        assert cut.translate(15) == 'FizzBuzz'
-        assert cut.translate(42) == 'Fizz'
-        assert cut.translate(45) == 'FizzBuzz'
-        assert cut.translate(49) == '49'
-        assert cut.translate(50) == 'Buzz'
+        assert cut.translate1(1) == '1'
+        assert cut.translate1(3) == 'Fizz'
+        assert cut.translate1(5) == 'Buzz'
+        assert cut.translate1(15) == 'FizzBuzz'
+        assert cut.translate1(42) == 'Fizz'
+        assert cut.translate1(45) == 'FizzBuzz'
+        assert cut.translate1(49) == '49'
+        assert cut.translate1(50) == 'Buzz'
 
     def test_translate2(self):
         '''
@@ -58,3 +58,26 @@ class TestFizzBuzz:
         assert cut.translate2(3) == 'FizzFizz'
         assert cut.translate2(5) == 'BuzzBuzz'
         assert cut.translate2(53) == 'FizzBuzz'
+
+    def test_translate3(self):
+        '''
+        Intent:
+        Given any number we sholud be able to apply the FizzBuzz rules to get
+        a string representation.
+
+        For any number print the number, unless:
+        For multiples of three print “Fizz” instead of the number and for the
+        multiples of five print “Buzz”. For numbers which are multiples of both
+        three and five print “FizzBuzz “.
+
+        These test should be asily verifable by inspection.
+        '''
+        cut = FizzBuzz()
+        assert cut.translate3(1) == '1'
+        assert cut.translate3(3) == 'Fizz'
+        assert cut.translate3(5) == 'Buzz'
+        assert cut.translate3(15) == 'FizzBuzz'
+        assert cut.translate3(42) == 'Fizz'
+        assert cut.translate3(45) == 'FizzBuzz'
+        assert cut.translate3(49) == '49'
+        assert cut.translate3(50) == 'Buzz'

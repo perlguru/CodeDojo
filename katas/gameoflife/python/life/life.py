@@ -34,16 +34,19 @@ class Board():
         Just set some default values
         '''
         self.board = []
-        self.width = 0
-        self.height = 0
+        self.width = self.height = 0
 
     def read_file(self, filename):
         '''
         Read the board definition file its raw form
         '''
-        # pylint: disable=unspecified-encoding
-        with open(filename) as golfile:
-            lines = [line.rstrip() for line in golfile]
+        # The "line.strip()" is probably un-needed as long as we take care of
+        # our input.
+
+        # We use "with" to handle resource leaks and excessive coding on our
+        # part
+        with open(filename, encoding='utf-8') as golfile:
+            lines = [line.strip() for line in golfile]
 
         return lines
 
@@ -52,7 +55,8 @@ class Board():
         Get height and width, then convert raw into a 2d representation (list
         of list)
         '''
-        self.set_height_and_width(raw.pop(0).split())
+        h_w = raw.pop(0).split()
+        self.set_height_and_width(h_w)
         self.compile_board_array(raw)
 
     def set_height_and_width(self, h_w):

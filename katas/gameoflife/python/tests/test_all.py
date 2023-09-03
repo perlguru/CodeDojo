@@ -35,6 +35,8 @@ class TestBoard:
         '''
         cut = Board()
         assert isinstance(cut, Board)
+        assert cut.height == 0
+        assert cut.width == 0
 
     def test_read_file(self):
         '''

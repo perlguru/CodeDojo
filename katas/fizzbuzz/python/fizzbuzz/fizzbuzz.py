@@ -12,7 +12,7 @@ class FizzBuzz():
     future.
     '''
 
-    def translate(self, number):
+    def translate1(self, number):
         '''
         From kata ---
         For any number print the number, unless:
@@ -67,3 +67,11 @@ class FizzBuzz():
             value = f'{number}'
 
         return value
+
+    def translate3(self, number):
+        '''
+        Using the same rules as translate1, lets use a lambda.
+        '''
+        value = lambda i: 'Fizz'*(not i % 3)+'Buzz'*(not i % 5) or i
+
+        return str(value(number))
