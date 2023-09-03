@@ -1,6 +1,12 @@
 This is an implementation of the Leap Years kata written in python using 
 an object oriented + test driven development approach.
 
+Since we use two methods to solve this kata, we thought it would be interesting to profile each method.
+Profiling is taken care of in app.py, we have found that method 1 is slightly faster than method 2.
+This may be a result of hardware or other factors, like method 2 relying on a try/except block.
+On my hardware it takes the entire profiling run approximately one minute to complete. A large number
+of runs are needed to see a distinct difference in the times.
+
 Python: 3.11.4
 Packages: pytest, pylint
 

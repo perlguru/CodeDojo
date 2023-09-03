@@ -1,6 +1,9 @@
 This is an implementation of the Game of Life kata written in python using 
 an object oriented + test driven development approach.
 
+See https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life for some interesting patterns.
+We use Blinker for most test, and Blinker and Glider for showing off in app.py.
+
 Python: 3.11.4
 Packages: pytest, pylint
 
