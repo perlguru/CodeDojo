@@ -15,7 +15,7 @@ def main():
     cut = Board()
     cut.load_from_file(BOARD1)
     cut.display()
-    for i in range(0,20):
+    for dummy in range(0,20):
         cut = cut.compute_next()
         sleep(0.5)
         os.system('clear')
