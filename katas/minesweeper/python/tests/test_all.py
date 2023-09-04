@@ -72,5 +72,4 @@ class TestMineSweeper:
         cut.calculate()
         cut.print_solved()
         captured = capsys.readouterr()
-        print(captured.out)
         assert captured.out == BOARD1_SOLVED
