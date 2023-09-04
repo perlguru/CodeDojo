@@ -1,6 +1,14 @@
 This is an implementation of the FizzBuzz kata written in python using 
 an object oriented + test driven development approach.
 
+Since we use three methods to solve this kata, we thought it would be interesting to profile each method.
+Profiling is taken care of in app.py, we have found that method 1 is 2x faster than method 3, and method 3
+is 5x faster than method2.
+
+This may be a result of hardware or other factors. On my hardware it takes the entire profiling run 
+approximately 10 seconds to complete. A large number of runs are needed to see a distinct difference
+in the times.
+
 Python: 3.11.4
 Packages: pytest, pylint
 
