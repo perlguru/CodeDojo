@@ -25,23 +25,34 @@ class MineSweeper():
 
         return lines
 
+    def set_height_and_width(self, h_w):
+        '''
+        extract height and width
+        '''
+        self.height = int(h_w[0])
+        self.width = int(h_w[1])
+
+
+    def compile_2d_array(self, raw):
+        '''
+        Convert string representation to an actual 2d array
+        '''
+        board = []
+        for row in raw:
+            outrow = []
+            for col in str(row):
+                outrow.append(col)
+            board.append(outrow)
+        return board
+
     def set_board(self, raw):
         '''
         From our string representation, get height, width and a 2d array of the
         board
         '''
         # Consume height and width
-        h_w = raw.pop(0).split()
-        self.height = int(h_w[0])
-        self.width = int(h_w[1])
-
-        # Convert string representation to an actual 2d array
-        self.board = []
-        for row in raw:
-            outrow = []
-            for col in str(row):
-                outrow.append(col)
-            self.board.append(outrow)
+        self.set_height_and_width(raw.pop(0).split())
+        self.board = self.compile_2d_array(raw)
 
     def calculate(self):
         '''
