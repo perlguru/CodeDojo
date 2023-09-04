@@ -16,7 +16,6 @@ def main():
      25010000    4.942    0.000    4.942    0.000 leapyear.py:12(__init__)
      25010000   17.528    0.000   17.528    0.000 leapyear.py:18(leapyear1)
      25010000   17.836    0.000   17.836    0.000 leapyear.py:42(leapyear2)
-
     '''
     for dummy in range(0,10000):
         for testdate in range(1500,4001):
