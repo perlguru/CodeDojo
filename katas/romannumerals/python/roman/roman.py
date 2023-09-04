@@ -2,6 +2,8 @@
 The Roman Numeral kata written in object oriented fashion.
 '''
 
+# We will use lut's to decode/encode numbers
+
 TO_ROMAN_LUT = {
     1000: "M",
     900: "CM",
@@ -44,7 +46,6 @@ class Roman():
     '''
     Very simple class to contain our implementation.
     '''
-
 
     def todigits(self, numeral):
         '''

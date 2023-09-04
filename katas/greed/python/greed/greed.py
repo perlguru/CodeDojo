@@ -10,8 +10,9 @@ import random
 class Borg:
     '''
     Greed is essentially the Game. There is no need to have mutiple instances,
-	so we could use the Borg (Singleton) design pattern, or simply us class
+	so we could use the Borg (Singleton) design pattern, or simply use class
 	variables and classmethods. To reduce typing, we have chosen the former.
+    And we wanted to highlight a design pattern.
     '''
     data = {}
 
@@ -66,8 +67,7 @@ class Greed(Borg):
         if count > 6:
             raise ValueError
 
-        # pylint: disable=unused-variable
-        for die in range(0, count):
+        for dummy in range(0, count):
             self.dice.append(random.randint(1, 6))
 
     def score(self):
@@ -90,6 +90,7 @@ class Greed(Borg):
         if sorted(self.dice) == [1, 2, 3, 4, 5, 6]:
             self.set_dice([])
             score = 1200
+
         return score
 
     def check_3_pairs(self):
