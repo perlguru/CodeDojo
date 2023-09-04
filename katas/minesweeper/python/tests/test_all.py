@@ -23,6 +23,10 @@ class TestMineSweeper:
         '''
         cut = MineSweeper()
         assert isinstance(cut, MineSweeper)
+        assert cut.height == 0
+        assert cut.width == 0
+        assert cut.solved == []
+
 
     def test_readfile(self):
         '''
