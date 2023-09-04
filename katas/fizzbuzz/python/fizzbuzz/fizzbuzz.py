@@ -28,6 +28,7 @@ class FizzBuzz():
         if number % 5 == 0:
             value += "Buzz"
 
+        # Maybe we could just set value to number or str(number) here?
         if not value:
             value = f'{number}'
 
