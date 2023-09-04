@@ -71,18 +71,11 @@ class MineSweeper():
 
         count = 0
         for square in square_lut:
-            # Convience
-            # pylint: disable=invalid-name
-            dx = square[0]
-            dy = square[1]
-
-            # We don't want to check non-existant squares
-            if dx + x >= 0 and dy + y >= 0 \
-                and \
-                dx + x <= self.width - 1 and dy + y <= self.height - 1:
-
-                if self.board[y + dy][x + dx] == "*":
+            try:
+                if self.board[y + square[1]][x + square[0]] == "*":
                     count += 1
+            except IndexError:
+                pass
 
         return count
 
@@ -91,6 +84,4 @@ class MineSweeper():
         Just print it out
         '''
         for row in range(0, self.height):
-            for col in range(0, self.width):
-                print(self.solved[row][col], end='')
-            print()
+            print("".join(str(value) for value in self.solved[row]))
