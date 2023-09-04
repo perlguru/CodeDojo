@@ -25,7 +25,8 @@ class TestMineSweeper:
         assert isinstance(cut, MineSweeper)
         assert cut.height == 0
         assert cut.width == 0
-        assert cut.solved == []
+        assert not cut.board
+        assert not cut.solved
 
 
     def test_readfile(self):
@@ -57,10 +58,10 @@ class TestMineSweeper:
         cut = MineSweeper()
         cut.set_board(cut.readfile("tests\\data\\board1.ms"))
         cut.calculate()
-        assert cut.solved == [['*',   1,   0,   0], \
-                              [  2,   2,   1,   0], \
-                              [  1, '*',   1,   0], \
-                              [  1,   1,   1,   0]]
+        assert cut.solved == [['*',  1,   0,   0], \
+                              [ 2,   2,   1,   0], \
+                              [ 1, '*',   1,   0], \
+                              [ 1,   1,   1,   0]]
 
     def test_print_solved(self, capsys):
         '''

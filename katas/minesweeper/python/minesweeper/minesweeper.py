@@ -19,8 +19,7 @@ class MineSweeper():
         '''
         Read the string representation from a file
         '''
-        # pylint: disable=unspecified-encoding
-        with open(filename) as msfile:
+        with open(filename, encoding="utf-8") as msfile:
             lines = [line.rstrip() for line in msfile]
 
         return lines
