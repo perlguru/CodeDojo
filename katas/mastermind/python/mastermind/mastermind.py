@@ -12,10 +12,20 @@ class Mastermind():
     We could have implemented this as classmethods as well, and may do so in the
     future.
     '''
+    def __init__(self):
+        secret = []
+
     def set_secret(self, secret):
         '''
         Manually set secret
         '''
+        self.secret = secret
+
+    def get_secret(self):
+        '''
+        Get secret
+        '''
+        return self.secret
 
     def gen_secret(self, colors):
         '''

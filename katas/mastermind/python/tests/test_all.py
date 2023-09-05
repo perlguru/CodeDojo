@@ -22,13 +22,18 @@ class TestMastermind:
         '''
         Manually set secret
         '''
+        cut = Mastermind()
+        cut.set_secret(['red', 'blue', 'green'])
+        assert cut.get_secret() == ['red', 'blue', 'green']
 
     def test_gen_secret(self):
         '''
         Generate an arbitrary secret
         '''
+        assert False
 
-    def compare_guess_to_secret(self):
+    def test_compare_guess_to_secret(self):
         '''
         Compare a guess to secret
         '''
+        assert False
