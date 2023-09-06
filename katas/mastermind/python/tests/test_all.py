@@ -52,7 +52,8 @@ class TestMastermind:
         assert cut.compare_guess_to_secret()
         assert cut.compare_guess_to_secret(guess=['red', 'blue', 'green']) == [3, 0]
         assert cut.compare_guess_to_secret(secret=['red', 'blue', 'green']) == [3, 0]
-        assert cut.compare_guess_to_secret(guess=['red', 'blue', 'green'], secret=['red', 'blue', 'green']) == [3, 0]
+        assert cut.compare_guess_to_secret(guess=['red', 'blue', 'green'],
+                                           secret=['red', 'blue', 'green']) == [3, 0]
 
     def test_compare_guess_to_secret_all_misplaced(self):
         '''
@@ -64,7 +65,8 @@ class TestMastermind:
         assert cut.compare_guess_to_secret()
         assert cut.compare_guess_to_secret(guess=['blue', 'green', 'red']) == [0, 3]
         assert cut.compare_guess_to_secret(secret=['red', 'blue', 'green']) == [0, 3]
-        assert cut.compare_guess_to_secret(guess=['blue', 'green', 'red'], secret=['red', 'blue', 'green']) == [0, 3]
+        assert cut.compare_guess_to_secret(guess=['blue', 'green', 'red'],
+                                           secret=['red', 'blue', 'green']) == [0, 3]
 
     def test_compare_guess_to_secret_mixed(self):
         '''
@@ -76,10 +78,17 @@ class TestMastermind:
         assert cut.compare_guess_to_secret() == [1, 0]
         assert cut.compare_guess_to_secret(guess=['blue', 'blue', 'red']) == [1, 1]
         assert cut.compare_guess_to_secret(secret=['red', 'blue', 'green']) == [1, 0]
-        assert cut.compare_guess_to_secret(guess=['blue', 'blue', 'red'], secret=['red', 'blue', 'green']) == [1, 1]
-        assert cut.compare_guess_to_secret(guess=['blue', 'blue', 'green'], secret=['red', 'blue', 'green']) == [2, 0]
-        assert cut.compare_guess_to_secret(guess=['red', 'blue', 'red'], secret=['red', 'blue', 'green']) == [2, 0]
-        assert cut.compare_guess_to_secret(guess=['blue', 'blue', 'blue'], secret=['red', 'blue', 'green']) == [1, 0]
-        assert cut.compare_guess_to_secret(guess=['blue', 'blue', 'blue', 'blue'], secret=['red', 'blue', 'blue', 'green']) == [2, 0]
-        assert cut.compare_guess_to_secret(guess=['blue', 'blue', 'blue', 'blue'], secret=['red', 'blue', 'green', 'blue']) == [2, 0]
-        assert cut.compare_guess_to_secret(guess=['blue', 'blue', 'blue', 'green'], secret=['red', 'blue', 'green', 'blue']) == [1, 2]
+        assert cut.compare_guess_to_secret(guess=['blue', 'blue', 'red'],
+                                           secret=['red', 'blue', 'green']) == [1, 1]
+        assert cut.compare_guess_to_secret(guess=['blue', 'blue', 'green'],
+                                           secret=['red', 'blue', 'green']) == [2, 0]
+        assert cut.compare_guess_to_secret(guess=['red', 'blue', 'red'],
+                                           secret=['red', 'blue', 'green']) == [2, 0]
+        assert cut.compare_guess_to_secret(guess=['blue', 'blue', 'blue'],
+                                           secret=['red', 'blue', 'green']) == [1, 0]
+        assert cut.compare_guess_to_secret(guess=['blue', 'blue', 'blue', 'blue'],
+                                           secret=['red', 'blue', 'blue', 'green']) == [2, 0]
+        assert cut.compare_guess_to_secret(guess=['blue', 'blue', 'blue', 'blue'],
+                                           secret=['red', 'blue', 'green', 'blue']) == [2, 0]
+        assert cut.compare_guess_to_secret(guess=['blue', 'blue', 'blue', 'green'],
+                                           secret=['red', 'blue', 'green', 'blue']) == [1, 2]
