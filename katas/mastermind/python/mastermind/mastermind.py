@@ -16,6 +16,7 @@ class Mastermind():
     '''
     def __init__(self):
         self.secret = []
+        self.guess = []
 
     def set_secret(self, secret):
         '''
@@ -23,11 +24,23 @@ class Mastermind():
         '''
         self.secret = secret
 
+    def set_guess(self, guess):
+        '''
+        Manually set secret
+        '''
+        self.guess = guess
+
     def get_secret(self):
         '''
         Get secret
         '''
         return self.secret
+
+    def get_guess(self):
+        '''
+        Get guess
+        '''
+        return self.guess
 
     def gen_secret(self, size, colors):
         '''
@@ -40,7 +53,14 @@ class Mastermind():
 
         self.secret = secret
 
-    def compare_guess_to_secret(self, guess, secret):
+    def compare_guess_to_secret(self, guess=None, secret=None):
         '''
         Compare a guess to the secret.
         '''
+        if not guess:
+            guess = self.guess
+
+        if not secret:
+            secret = self.secret
+
+        return guess == secret

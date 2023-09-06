@@ -46,4 +46,10 @@ class TestMastermind:
         '''
         Compare a guess to secret
         '''
-        assert False
+        cut = Mastermind()
+        cut.set_secret(['red', 'blue', 'green'])
+        cut.set_guess(['red', 'blue', 'green'])
+        assert cut.compare_guess_to_secret()
+        assert cut.compare_guess_to_secret(guess=['red', 'blue', 'green'])
+        assert cut.compare_guess_to_secret(secret=['red', 'blue', 'green'])
+        assert cut.compare_guess_to_secret(guess=['red', 'blue', 'green'], secret=['red', 'blue', 'green'])
