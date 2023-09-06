@@ -30,7 +30,17 @@ class TestMastermind:
         '''
         Generate an arbitrary secret
         '''
-        assert False
+        cut = Mastermind()
+        colors = ['red', 'blue', 'green']
+        cut.gen_secret(4, colors)
+        secret = cut.get_secret()
+
+        assert len(secret) == 4
+        valid = 0
+        for color in colors:
+            valid += secret.count(color)
+
+        assert valid == 4
 
     def test_compare_guess_to_secret(self):
         '''

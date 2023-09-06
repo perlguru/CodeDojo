@@ -2,6 +2,8 @@
 The Mastermind kata written in object oriented fashion.
 '''
 
+import random
+
 class Mastermind():
     '''
     Very simple class to contain our implementation.
@@ -13,7 +15,7 @@ class Mastermind():
     future.
     '''
     def __init__(self):
-        secret = []
+        self.secret = []
 
     def set_secret(self, secret):
         '''
@@ -27,10 +29,16 @@ class Mastermind():
         '''
         return self.secret
 
-    def gen_secret(self, colors):
+    def gen_secret(self, size, colors):
         '''
         Randomly set secret
         '''
+        secret = []
+        for dummy in range(0, size):
+            color = random.choice(colors)
+            secret.append(color)
+
+        self.secret = secret
 
     def compare_guess_to_secret(self, guess, secret):
         '''
