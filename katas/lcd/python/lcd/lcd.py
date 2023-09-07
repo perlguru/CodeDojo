@@ -7,6 +7,40 @@ class LCD():
     Very simple class to contain our implementation.
     '''
 
+    # A Simple global to express our LCD digit representations
+    LCD_DIGITS = [
+        [' _ \n'+\
+         '| |\n'+\
+         '|_|'],
+        ['   \n'+\
+         '  |\n'+\
+         '  |'],
+        [' _\n'+\
+         ' _|\n'+\
+         '|_ '],
+        [' _ \n'+\
+         ' _|\n'+\
+         ' _|'],
+        ['   \n'+\
+         '|_|\n'+\
+         '  |'],
+        [' _ \n'+\
+         '|_ \n'+\
+         ' _|'],
+        [' _ \n'+\
+         '|__\n'+\
+         '|_|'],
+        [' _ \n'+\
+         '  |\n'+\
+         '  |'],
+        [' _ \n'+\
+         '|_|\n'+\
+         '|_|'],
+        [' _ \n'+\
+         '|_|\n'+\
+         ' _|']
+    ]
+
     def __init__(self):
         '''
         Initialize instance
@@ -26,3 +60,9 @@ class LCD():
         Get our working number.
         '''
         return self.arabic
+
+    def gen_lcd_digit(self, digit):
+        '''
+        Generate a single LCD digit
+        '''
+        return "".join(self.LCD_DIGITS[digit])

@@ -34,3 +34,50 @@ class TestLCD:
         cut = LCD()
         cut.set_number(42)
         assert cut.arabic == 42
+
+    def test_gen_lcd_digit_0_to_9(self):
+        '''
+        Simply set our working number.
+        '''
+        cut = LCD()
+        lcd_digit = cut.gen_lcd_digit(0)
+        print(lcd_digit)
+        assert lcd_digit == ' _ \n' \
+                            '| |\n' \
+                            '|_|'
+        lcd_digit = cut.gen_lcd_digit(1)
+        assert lcd_digit == '   \n'+\
+                            '  |\n'+\
+                            '  |'
+        lcd_digit = cut.gen_lcd_digit(2)
+        assert lcd_digit == ' _\n'+\
+                            ' _|\n'+\
+                            '|_ '
+        lcd_digit = cut.gen_lcd_digit(3)
+        assert lcd_digit == ' _ \n'+\
+                            ' _|\n'+\
+                            ' _|'
+        lcd_digit = cut.gen_lcd_digit(4)
+        assert lcd_digit == '   \n'+\
+                            '|_|\n'+\
+                            '  |'
+        lcd_digit = cut.gen_lcd_digit(5)
+        assert lcd_digit == ' _ \n'+\
+                            '|_ \n'+\
+                            ' _|'
+        lcd_digit = cut.gen_lcd_digit(6)
+        assert lcd_digit == ' _ \n'+\
+                            '|__\n'+\
+                            '|_|'
+        lcd_digit = cut.gen_lcd_digit(7)
+        assert lcd_digit == ' _ \n'+\
+                            '  |\n'+\
+                            '  |'
+        lcd_digit = cut.gen_lcd_digit(8)
+        assert lcd_digit == ' _ \n'+\
+                            '|_|\n'+\
+                            '|_|'
+        lcd_digit = cut.gen_lcd_digit(9)
+        assert lcd_digit == ' _ \n'+\
+                            '|_|\n'+\
+                            ' _|'
