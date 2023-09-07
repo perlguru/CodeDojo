@@ -7,38 +7,58 @@ class LCD():
     Very simple class to contain our implementation.
     '''
 
-    # A Simple global to express our LCD digit representations
+
     LCD_DIGITS = [
-        [' _ \n'+\
-         '| |\n'+\
-         '|_|'],
-        ['   \n'+\
-         '  |\n'+\
-         '  |'],
-        [' _\n'+\
-         ' _|\n'+\
-         '|_ '],
-        [' _ \n'+\
-         ' _|\n'+\
-         ' _|'],
-        ['   \n'+\
-         '|_|\n'+\
-         '  |'],
-        [' _ \n'+\
-         '|_ \n'+\
-         ' _|'],
-        [' _ \n'+\
-         '|__\n'+\
-         '|_|'],
-        [' _ \n'+\
-         '  |\n'+\
-         '  |'],
-        [' _ \n'+\
-         '|_|\n'+\
-         '|_|'],
-        [' _ \n'+\
-         '|_|\n'+\
-         ' _|']
+        [
+         [0,2,0], #  _
+         [1,0,1], # | |
+         [1,2,1], # |_|
+        ],
+        [
+         [0,0,0], #
+         [0,0,1], #   |
+         [0,0,1], #   |
+        ],
+        [
+         [0,2,0], #  _
+         [0,2,1], #  _|
+         [1,2,0], # |_
+        ],
+        [
+         [0,2,0], #  _
+         [0,2,1], #  _|
+         [0,2,1], #  _|
+        ],
+        [
+         [0,0,0], # 
+         [1,2,1], # |_|
+         [0,0,1], #   |
+        ],
+        [
+         [0,2,0], #  _
+         [1,2,0], # |_
+         [0,2,1], #  _|
+        ],
+        [
+         [0,2,0], #  _
+         [1,2,0], # |_
+         [1,2,1], # |_|
+        ],
+        [
+         [0,2,0], #  _
+         [0,0,1], #   |
+         [0,0,1], #   |
+        ],
+        [
+         [0,2,0], #  _
+         [1,2,1], # |_|
+         [1,2,1], # |_|
+        ],
+        [
+         [0,2,0], #  _
+         [1,2,1], # |_|
+         [0,2,1], #  _|
+        ]
     ]
 
     def __init__(self):
@@ -65,4 +85,26 @@ class LCD():
         '''
         Generate a single LCD digit
         '''
-        return "".join(self.LCD_DIGITS[digit])
+        definition = self.LCD_DIGITS[digit]
+        final = ""
+        for line in definition:
+            out = ""
+            for i in line:
+                if i == 1:
+                    out += "|"
+                elif i == 2:
+                    out += "_"
+                else: 
+                    out +=" "
+            final += out + "\n"
+
+        return final
+
+    def gen_lcd_number(self, number):
+        '''
+        Generate a full LCD number
+        '''
+        for digit in list(str(number)):
+            print(self.LCD_DIGITS[int(digit)])
+
+        return list(str(number))
