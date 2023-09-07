@@ -18,7 +18,19 @@ class TestLCD:
         cut = LCD()
         assert isinstance(cut, LCD)
 
+    def test_get_number(self):
+        '''
+        Simply our number gettor.
+        '''
+        cut = LCD()
+        cut.arabic = 42
+        assert cut.get_number() == 42
+
+
     def test_set_number(self):
         '''
         Simply set our working number.
         '''
+        cut = LCD()
+        cut.set_number(42)
+        assert cut.arabic == 42
