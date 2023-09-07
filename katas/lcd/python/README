@@ -1,6 +1,8 @@
 This is an implementation of the Number to LCD kata written in python using 
 an object oriented + test driven development approach.
 
+Thinking that represemting LCD digits as raw strings is probably not right, takinh a littlr btrak yo yhink tkis out
+
 Python: 3.11.4
 Packages: pytest, pylint
 
