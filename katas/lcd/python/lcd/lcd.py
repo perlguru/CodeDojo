@@ -100,9 +100,6 @@ class LCD():
 
         return final
 
-#         [0,0,0], #
-#         [1,2,1], # |_|
-#         [0,0,1], #   |
     def gen_lcd_number(self, number):
         '''
         Generate a full LCD number
