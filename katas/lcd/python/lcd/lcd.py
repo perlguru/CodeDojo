@@ -108,7 +108,6 @@ class LCD():
         Generate a full LCD number
         '''
         number_of_digits = len(str(number))
-        lcd_digit = ""
         final = ""
         for i in [0, 1, 2]:
             out = ""
@@ -123,5 +122,5 @@ class LCD():
                             out += " "
 
             final += out + "\n"
-        
+
         return final
