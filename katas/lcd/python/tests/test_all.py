@@ -87,7 +87,18 @@ class TestLCD:
         Generate an LCD number of multiple digits
         '''
         cut = LCD()
+        lcd_number = cut.gen_lcd_number(4)
+        assert lcd_number == '   \n'+\
+                             '|_|\n'+\
+                             '  |\n'
+
         lcd_number = cut.gen_lcd_number(42)
-        assert lcd_number == '     _ \n'+\
-                             '|_|  _|\n'+\
-                             '  | |_ \n'
+        assert lcd_number == '    _ \n'+\
+                             '|_| _|\n'+\
+                             '  ||_ \n'
+
+        lcd_number = cut.gen_lcd_number(1234567890)
+        assert lcd_number == '    _  _     _  _  _  _  _  _ \n'+\
+                             '  | _| _||_||_ |_   ||_||_|| |\n'+\
+                             '  ||_  _|  | _||_|  ||_| _||_|\n'
+
