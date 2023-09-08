@@ -103,6 +103,8 @@ class LCD():
     def gen_lcd_number(self, number):
         '''
         Generate a full LCD number
+
+        This could probably be done simply usin a re dubstitution
         '''
         number_of_digits = len(str(number))
         final = ""
