@@ -108,17 +108,12 @@ class LCD():
         Generate a full LCD number
         '''
         number_of_digits = len(str(number))
-        print("NoD", number_of_digits)
         lcd_digit = ""
         final = ""
         for i in [0, 1, 2]:
-            # i = 0
-            print("Fin", final)
             out = ""
             for pos in range(0, number_of_digits):
-                # pos = 0
                 for digit in list(str(number))[pos]:
-                    # digit = 4
                     for char in self.LCD_DIGITS[int(digit)][i]:
                         if char == 1:
                             out += "|"
@@ -127,9 +122,6 @@ class LCD():
                         else:
                             out += " "
 
-                print("X", digit, pos, i, self.LCD_DIGITS[int(digit)][i], out)
             final += out + "\n"
         
-        print(final)
-
         return final

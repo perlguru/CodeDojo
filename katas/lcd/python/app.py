@@ -9,7 +9,8 @@ def main():
     Thin layer to exercise LCD class
     '''
     cut = LCD()
-    assert cut
+    lcd_number = cut.gen_lcd_number(1234567890)
+    print(lcd_number)
 
 if __name__ == "__main__":
     main()
