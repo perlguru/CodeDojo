@@ -11,8 +11,8 @@ class TTT():
         '''
         Initialize instance
         '''
-        self.board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
-        self.player = "X"
+        self.board = [[None, None, None], [None, None, None], [None, None, None]]
+        self.player = "O"
 
     def get_board(self):
         '''
@@ -20,16 +20,22 @@ class TTT():
         '''
         return self.board
 
-    def rotate_player(self):
-        current = self.player
+    def set_board(self, board):
+        '''
+        Print the current board to stdout.
+        '''
+        self.board = board
+        return self.board
 
+    def rotate_player(self):
         if self.player == "X":
             self.player = "O"
+        else:
+            self.player = "X"
 
-        return current
+        return self.player
 
     def accept_play(self, pos):
-
         '''
         Print the current board to stdout.
         '''
@@ -40,6 +46,8 @@ class TTT():
         '''
         Print the current board to stdout.
         '''
+        for line in self.board:
+            print(line)
         return ''
 
     def make_move(self, square):
@@ -48,3 +56,47 @@ class TTT():
         '''
         dummy = square
         return ''
+
+    def check_row_winner(self):
+        '''
+        Check for winners of a row
+        '''
+        winner = None
+        row = None
+        for i, row in enumerate(self.board):
+            if row.count('X') == 3:
+                winner = 'X'
+                break
+            if row.count('O') == 3:
+                winner = 'O'
+                break
+
+        return [winner, i]
+
+    def check_col_winner(self):
+        '''
+        Check for winners of a row
+        '''
+        winner = None
+        col = None
+        count = 0
+        transpose = list(map(list, zip(*self.board)))
+
+        for i, row in enumerate(transpose):
+             if row.count('X') == 3:
+                 winner = 'X'
+                 break
+
+             if row.count('O') == 3:
+                 winner = 'O'
+                 break
+
+        return [winner, i]
+
+    def check_end_of_game_and_winner(self):
+        '''
+        Check end of game conditions and report winner if available
+        '''
+        eog = False
+        winner = None
+        return [eog, winner]
