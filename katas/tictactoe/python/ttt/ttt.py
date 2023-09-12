@@ -71,7 +71,7 @@ class TTT():
                 winner = 'O'
                 break
 
-        return [winner, i]
+        return [i, winner]
 
     def check_col_winner(self):
         '''
@@ -91,7 +91,31 @@ class TTT():
                  winner = 'O'
                  break
 
-        return [winner, i]
+        return [i, winner]
+
+    def check_dia_winner(self):
+        winner = None
+        dia = None
+        count = 0
+        dia_ul_lr = [self.board[0][0], self.board[1][1], self.board[2][2]]
+        dia_ur_ll = [self.board[2][0], self.board[1][1], self.board[0][2]]
+        for which in ["X", "O"]:
+            count = dia_ul_lr.count(which)
+
+            if count == 3:
+                winner = which
+                break
+
+            count = dia_ur_ll.count(which)
+
+            if count == 3:
+                winner = which
+                break
+
+        if winner:
+            return [True, winner]
+        else:
+            return [False, None]
 
     def check_end_of_game_and_winner(self):
         '''
@@ -99,4 +123,24 @@ class TTT():
         '''
         eog = False
         winner = None
+
+        status = self.check_row_winner()
+        print(1, status)
+        if status[0] == True:
+            eog = True
+            winner = status[1]
+
+        if not eog:
+            status = self.check_col_winner()
+            print(2, status)
+            if status[0] == True:
+                eog = True
+                winner = status[1]
+        if not eog:
+            status = self.check_dia_winner()
+            print(3, status)
+            if status[0] == True:
+                eog = True
+                winner = status[1]
+
         return [eog, winner]

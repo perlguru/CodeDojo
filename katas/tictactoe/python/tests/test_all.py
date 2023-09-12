@@ -75,9 +75,9 @@ class TestTTT:
         '''
         cut = TTT()
         cut.set_board([[None, None, None], ["X", "X", "X"], [None, None, None]])
-        assert cut.check_row_winner() == ['X', 1]
+        assert cut.check_row_winner() == [1, 'X']
         cut.set_board([["O", "O", "O"], [None, None, None], [None, None, None]])
-        assert cut.check_row_winner() == ['O', 0]
+        assert cut.check_row_winner() == [0, 'O']
 
     def test_check_col_winner(self):
         '''
@@ -86,6 +86,17 @@ class TestTTT:
         '''
         cut = TTT()
         cut.set_board([[None, "X", None], [None, "X", None], [None, "X", None]])
-        assert cut.check_col_winner() == ['X', 1]
+        assert cut.check_col_winner() == [1, 'X']
         cut.set_board([["O", None, None], ["O", None, None], ["O", None, None]])
-        assert cut.check_col_winner() == ['O', 0]
+        assert cut.check_col_winner() == [0, 'O']
+
+    def test_check_dia_winner(self):
+        '''
+        Intent:
+        Check the col winner conditions.
+        '''
+        cut = TTT()
+        cut.set_board([["X", None, None], [None, "X", None], [None, None, "X"]])
+        assert cut.check_dia_winner() == [True, 'X']
+        cut.set_board([[None, None, "O"], [None, "O", None], ["O", None, None]])
+        assert cut.check_dia_winner() == [True, 'O']
