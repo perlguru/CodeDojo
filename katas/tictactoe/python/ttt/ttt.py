@@ -28,6 +28,9 @@ class TTT():
         return self.board
 
     def rotate_player(self):
+        '''
+        ...
+        '''
         if self.player == "X":
             self.player = "O"
         else:
@@ -62,11 +65,11 @@ class TTT():
         Check for winners of a row
         '''
         winner = None
-        row = None
         for i, row in enumerate(self.board):
             if row.count('X') == 3:
                 winner = 'X'
                 break
+
             if row.count('O') == 3:
                 winner = 'O'
                 break
@@ -78,24 +81,26 @@ class TTT():
         Check for winners of a row
         '''
         winner = None
-        col = None
-        count = 0
         transpose = list(map(list, zip(*self.board)))
+        col = 0
 
         for i, row in enumerate(transpose):
-             if row.count('X') == 3:
-                 winner = 'X'
-                 break
+            col = i
+            if row.count('X') == 3:
+                winner = 'X'
+                break
 
-             if row.count('O') == 3:
-                 winner = 'O'
-                 break
+            if row.count('O') == 3:
+                winner = 'O'
+                break
 
-        return [i, winner]
+        return [col, winner]
 
     def check_dia_winner(self):
+        '''
+        ...
+        '''
         winner = None
-        dia = None
         count = 0
         dia_ul_lr = [self.board[0][0], self.board[1][1], self.board[2][2]]
         dia_ur_ll = [self.board[2][0], self.board[1][1], self.board[0][2]]
@@ -114,8 +119,8 @@ class TTT():
 
         if winner:
             return [True, winner]
-        else:
-            return [False, None]
+
+        return [False, None]
 
     def check_end_of_game_and_winner(self):
         '''
@@ -125,21 +130,18 @@ class TTT():
         winner = None
 
         status = self.check_row_winner()
-        print(1, status)
-        if status[0] == True:
+        if status[1]:
             eog = True
             winner = status[1]
 
         if not eog:
             status = self.check_col_winner()
-            print(2, status)
-            if status[0] == True:
+            if status[1]:
                 eog = True
                 winner = status[1]
         if not eog:
             status = self.check_dia_winner()
-            print(3, status)
-            if status[0] == True:
+            if status[1]:
                 eog = True
                 winner = status[1]
 
