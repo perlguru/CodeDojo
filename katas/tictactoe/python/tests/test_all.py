@@ -100,3 +100,12 @@ class TestTTT:
         assert cut.check_dia_winner() == [True, 'X']
         cut.set_board([[None, None, "O"], [None, "O", None], ["O", None, None]])
         assert cut.check_dia_winner() == [True, 'O']
+
+    def test_check_eog(self):
+        '''
+        Intent:
+        Check the col winner conditions.
+        '''
+        cut = TTT()
+        cut.set_board([["X", "O", "X"], ["O", "X", "O"], ["O", "X", "O"]])
+        assert cut.check_eog() == True

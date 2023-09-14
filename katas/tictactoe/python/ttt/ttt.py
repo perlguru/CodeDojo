@@ -122,6 +122,19 @@ class TTT():
 
         return [False, None]
 
+    def check_eog(self):
+        '''
+        ...
+        '''
+        count = 0
+        for dummy, row in enumerate(self.board):
+            count += row.count(None)
+
+        if count == 0:
+            return True
+
+        return False
+
     def check_end_of_game_and_winner(self):
         '''
         Check end of game conditions and report winner if available
@@ -139,10 +152,15 @@ class TTT():
             if status[1]:
                 eog = True
                 winner = status[1]
+
         if not eog:
             status = self.check_dia_winner()
             if status[1]:
                 eog = True
                 winner = status[1]
+
+        if not eog:
+            eog = self.check_eog()
+            winner = None
 
         return [eog, winner]
