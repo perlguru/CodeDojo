@@ -1,0 +1,17 @@
+Extending:
+    Should we use test setup and/or teardown? Same for class setup and/or teardown.
+
+    Consider dependency injection making the number part of the constructor.
+
+    Explore using @classmethods and class variables. Profile alternative methods.
+
+    Perhaps look at removing if's by creating a class "Number" that would explicatly
+    generate "Fizz", "Buzz" or "FizzBuzz" as needed.
+
+    Maybe even a class "Fizz" and a class "Buzz"?
+
+Otherwise this kata is fairly complete.
+
+Lessons learned (or exposed):
+Very simple OOD (Not a lot to be impressed by)
+Perhaps profiling @classmethods may expose some efficiencies

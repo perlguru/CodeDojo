@@ -1,3 +1,4 @@
+# coding=utf-8
 '''
 The FizzBuzz kata written in object oriented fashion.
 '''
@@ -14,7 +15,7 @@ class FizzBuzz():
 
     def translate1(self, number):
         '''
-        From kata ---
+        From kata:
         For any number print the number, unless:
         For multiples of three print “Fizz” instead of the number and for the
         multiples of five print “Buzz”. For numbers which are multiples of both

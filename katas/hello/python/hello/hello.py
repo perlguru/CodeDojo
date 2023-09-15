@@ -1,5 +1,5 @@
 '''
-The classic Hello world written in object oriented fashion.
+The classic Hello world written in object-oriented fashion.
 '''
 
 class Hello():
@@ -9,7 +9,7 @@ class Hello():
     We will have two methods. One that returns a value, and one that prints the
     value to stdout.
 
-    We could have implemented this as classmethods as well, and may do so in the
+    We could have implemented this as class methods as well, and may do so in the
     future.
     '''
 

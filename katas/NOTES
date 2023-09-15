@@ -1,0 +1,23 @@
+Start of first review of katas.
+
+Some things to look for:
+    Reduction of if statements
+    More use of design patterns
+    SOLID principles
+        dependency injection
+        single responsibility
+        open/closed
+
+codecracker/
+fizzbuzz/
+foobarqix/
+gameoflife/
+greed/
+1st pass hello/
+lcd/
+leapyears/
+manhattan/
+mastermind/
+minesweeper/
+romannumerals/
+tictactoe/

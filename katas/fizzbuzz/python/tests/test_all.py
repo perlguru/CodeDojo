@@ -1,27 +1,28 @@
-'''
+# coding=utf-8
+"""
 Test for FizzBuzz kata
-'''
+"""
 
 from fizzbuzz.fizzbuzz import FizzBuzz
 
 class TestFizzBuzz:
-    '''
+    """
     Simple class to bundle our test under.
-    '''
+    """
 
     def test_create(self):
-        '''
+        """
         Intent:
         As a matter of style, always test that the class under test can create
         an object.
-        '''
+        """
         cut = FizzBuzz()
         assert isinstance(cut, FizzBuzz)
 
     def test_translate1(self):
-        '''
+        """
         Intent:
-        Given any number we sholud be able to apply the FizzBuzz rules to get
+        Given any number we should be able to apply the FizzBuzz rules to get
         a string representation.
 
         For any number print the number, unless:
@@ -29,8 +30,8 @@ class TestFizzBuzz:
         multiples of five print “Buzz”. For numbers which are multiples of both
         three and five print “FizzBuzz “.
 
-        These test should be asily verifable by inspection.
-        '''
+        These test should be easily verifiable by inspection.
+        """
         cut = FizzBuzz()
         assert cut.translate1(1) == '1'
         assert cut.translate1(3) == 'Fizz'
@@ -42,27 +43,27 @@ class TestFizzBuzz:
         assert cut.translate1(50) == 'Buzz'
 
     def test_translate2(self):
-        '''
+        """
         From kata (part 2) ---
         As before, but
         A number is fizz if it is divisible by 3 or if it has a 3 in it
         A number is buzz if it is divisible by 5 or if it has a 5 in it
 
-        For exemple :
-
+        For example :
         53 should return FizzBuzz (contain 5 and 3)
-        35 should return FizzBuzzBuzz (contain 3 and 5 and it divided by 5)
-        '''
+        35 should return FizzBuzzBuzz (contain 3 and 5, and it is divisible by 5)
+        """
         cut = FizzBuzz()
         assert cut.translate2(1) == '1'
         assert cut.translate2(3) == 'FizzFizz'
         assert cut.translate2(5) == 'BuzzBuzz'
+        assert cut.translate2(35) == 'FizzBuzzBuzz'
         assert cut.translate2(53) == 'FizzBuzz'
 
     def test_translate3(self):
-        '''
+        """
         Intent:
-        Given any number we sholud be able to apply the FizzBuzz rules to get
+        Given any number we should be able to apply the FizzBuzz rules to get
         a string representation.
 
         For any number print the number, unless:
@@ -71,7 +72,7 @@ class TestFizzBuzz:
         three and five print “FizzBuzz “.
 
         These test should be asily verifable by inspection.
-        '''
+        """
         cut = FizzBuzz()
         assert cut.translate3(1) == '1'
         assert cut.translate3(3) == 'Fizz'
