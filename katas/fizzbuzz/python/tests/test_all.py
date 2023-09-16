@@ -82,3 +82,18 @@ class TestFizzBuzz:
         assert cut.translate3(45) == 'FizzBuzz'
         assert cut.translate3(49) == '49'
         assert cut.translate3(50) == 'Buzz'
+
+    def test_translate4(self):
+        cut = FizzBuzz()
+        assert cut.translate4(1) == '1'
+        assert cut.translate4(3) == 'Fizz'
+        assert cut.translate4(5) == 'Buzz'
+        assert cut.translate4(15) == 'FizzBuzz'
+        assert cut.translate4(49) == '49'
+
+    def test_translate5(self):
+        assert FizzBuzz.translate5(1) == '1'
+        assert FizzBuzz.translate5(3) == 'Fizz'
+        assert FizzBuzz.translate5(5) == 'Buzz'
+        assert FizzBuzz.translate5(15) == 'FizzBuzz'
+        assert FizzBuzz.translate5(49) == '49'

@@ -5,7 +5,37 @@ The FizzBuzz kata written in object oriented fashion.
 
 import re
 
+
+class Fizz():
+    '''
+    ...
+    '''
+    def __init__(self, number):
+        value = {
+            0 : "Fizz"
+        }
+
+        key = number % 3
+        value.setdefault(key, "")
+
+        self.repr = value[key]
+
+class Buzz():
+    '''
+    ...
+    '''
+    def __init__(self, number):
+        value = {
+            0 : "Buzz"
+        }
+
+        key = number % 5
+        value.setdefault(key, "")
+
+        self.repr = value[key]
+
 class FizzBuzz():
+
     '''
     Very simple class to contain our implementation.
 
@@ -77,3 +107,35 @@ class FizzBuzz():
         value = lambda i: 'Fizz'*(not i % 3)+'Buzz'*(not i % 5) or i
 
         return str(value(number))
+
+    def translate4(self, number):
+        '''
+        Using the same rules as translate1, lets use individual classes to
+        avoid if/then's.
+        '''
+        value = Fizz(number).repr + Buzz(number).repr or number
+
+        return str(value)
+
+    @classmethod
+    def translate5(cls, number):
+        '''
+        From kata:
+        For any number print the number, unless:
+        For multiples of three print “Fizz” instead of the number and for the
+        multiples of five print “Buzz”. For numbers which are multiples of both
+        three and five print “FizzBuzz “.
+        '''
+        value = ""
+
+        if number % 3 == 0:
+            value = "Fizz"
+
+        if number % 5 == 0:
+            value += "Buzz"
+
+        # Maybe we could just set value to number or str(number) here?
+        if not value:
+            value = f'{number}'
+
+        return value

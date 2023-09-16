@@ -2,13 +2,14 @@ Extending:
     Should we use test setup and/or teardown? Same for class setup and/or teardown.
 
     Consider dependency injection making the number part of the constructor.
+    *RECONSIDERED*
 
     Explore using @classmethods and class variables. Profile alternative methods.
+    *DONE* See translate5.
 
     Perhaps look at removing if's by creating a class "Number" that would explicatly
-    generate "Fizz", "Buzz" or "FizzBuzz" as needed.
-
-    Maybe even a class "Fizz" and a class "Buzz"?
+    generate "Fizz", "Buzz" or "FizzBuzz" as needed. Maybe even a class "Fizz" and a class "Buzz"?
+    *DONE* See translate4. Used a defultdict to implement.
 
 Otherwise this kata is fairly complete.
 

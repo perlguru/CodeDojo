@@ -20,6 +20,7 @@ def main():
     for number in range(1, 101):
         print(f'{number} => {cut.translate3(number)}')
 
+
 def profile():
     '''
     Thin layer to profile different FizzBuzz translations.
@@ -45,6 +46,12 @@ def profile():
 
         for number in range(1, 101):
             cut.translate3(number)
+
+        for number in range(1, 101):
+            cut.translate4(number)
+
+        for number in range(1, 101):
+            FizzBuzz.translate5(number)
 
 if __name__ == "__main__":
     main()

@@ -3,7 +3,8 @@ an object oriented + test driven development approach.
 
 Since we use three methods to solve this kata, we thought it would be interesting to profile each method.
 Profiling is taken care of in app.py, we have found that method 1 is 2x faster than method 3, and method 3
-is 5x faster than method2.
+is 5x faster than method2. Method 4is slow as well being nearly 3 times slower than method 3. Method 5
+(classmethod) is only slightly slower than method 1.
 
 It should be noted that translate2 does do more work than the other 2 translates.
 
