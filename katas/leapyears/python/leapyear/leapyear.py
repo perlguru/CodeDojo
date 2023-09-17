@@ -39,6 +39,30 @@ class LeapYear:
 
         return value
 
+    def leapyear1(self):
+        '''
+        Method 1:
+        Use the rules spelled out in kata, but use defaultdict to avoid if's
+        '''
+        value = False
+
+        if not self.year % 400:
+            value = True
+
+        if not self.year % 4:
+            value = True
+
+        if not self.year % 4 and self.year % 100:
+            value = True
+
+        if not self.year % 100 and self.year % 400:
+            value = False
+
+        if not self.year % 4000:
+            value = False
+
+        return value
+
     def leapyear2(self):
         '''
         Method 2:
@@ -53,3 +77,4 @@ class LeapYear:
             value = False
 
         return value
+
