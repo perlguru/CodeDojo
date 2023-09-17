@@ -1,7 +1,7 @@
 Start of first review of katas.
 
 Some things to look for:
-    Reduction of if statements
+    Reduction of if statements. Think about this a little.
     More use of design patterns
     SOLID principles
         dependency injection
@@ -9,8 +9,8 @@ Some things to look for:
         open/closed
 
 codecracker/
-fizzbuzz/
-foobarqix/
+1st pass fizzbuzz/
+1st pass foobarqix/
 gameoflife/
 greed/
 1st pass hello/
