@@ -15,4 +15,4 @@ Otherwise this kata is fairly complete.
 
 Lessons learned (or exposed):
 Very simple OOD (Not a lot to be impressed by)
-Perhaps profiling @classmethods may expose some efficiencies
+Perhaps profiling @classmethods may expose some efficiencies (Does not seem to)
