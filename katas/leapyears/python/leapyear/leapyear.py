@@ -4,6 +4,14 @@ The Leap Years kata written in object oriented fashion.
 
 from datetime import date
 
+class Year:
+    def __init__(self, year=2001):
+        self.year = year
+
+    def isLeapYear(self):
+        leapyear = self.year % 400 or self.year % 4 or self.year % 4 and self.year % 100
+        return False
+
 class LeapYear:
     '''
     Main LeapYear class
