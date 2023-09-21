@@ -84,6 +84,9 @@ class TestFizzBuzz:
         assert cut.translate3(50) == 'Buzz'
 
     def test_translate4(self):
+        '''
+        Test if reduction using dict's
+        '''
         cut = FizzBuzz()
         assert cut.translate4(1) == '1'
         assert cut.translate4(3) == 'Fizz'
@@ -92,8 +95,22 @@ class TestFizzBuzz:
         assert cut.translate4(49) == '49'
 
     def test_translate5(self):
+        '''
+        Test using classmethods
+        '''
         assert FizzBuzz.translate5(1) == '1'
         assert FizzBuzz.translate5(3) == 'Fizz'
         assert FizzBuzz.translate5(5) == 'Buzz'
         assert FizzBuzz.translate5(15) == 'FizzBuzz'
         assert FizzBuzz.translate5(49) == '49'
+
+    def test_translate6(self):
+        '''
+        Test using boolean evals for if reduction
+        '''
+        cut = FizzBuzz()
+        assert cut.translate6(1) == '1'
+        assert cut.translate6(3) == 'Fizz'
+        assert cut.translate6(5) == 'Buzz'
+        assert cut.translate6(15) == 'FizzBuzz'
+        assert cut.translate6(49) == '49'

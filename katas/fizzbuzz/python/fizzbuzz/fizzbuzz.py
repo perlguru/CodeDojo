@@ -5,34 +5,54 @@ The FizzBuzz kata written in object oriented fashion.
 
 import re
 
+class Number():
+    '''
+    Super class for Fizz and Buzz
+    '''
+    def __init__(self, number, divisor, word):
+        '''
+        :param number: Number under inspection
+        :param divisor: The effective divisor
+        :param word: Replacement word, if needed
+        '''
+        self.number = number
+        self.divisor = divisor
+        self.word = word
 
-class Fizz():
-    '''
-    ...
-    '''
-    def __init__(self, number):
+    def get_value(self):
+        '''
+        Test condition by boolean comparison (not if's)
+        :return: self.word if conditions pass, "" otherwise
+        '''
+        return (not self.number % self.divisor) and self.word or ""
+
+    def lu_value(self):
+        '''
+        Test condition by comparing dictionary look up table.
+        :return: self.word if conditions pass, "" otherwise
+        '''
         value = {
-            0 : "Fizz"
+            0 : self.word
         }
 
-        key = number % 3
+        key = self.number % self.divisor
         value.setdefault(key, "")
 
-        self.repr = value[key]
+        return value[key]
 
-class Buzz():
+class Fizz(Number):
     '''
-    ...
+    Class to represent numbers evenly divisible by 3
     '''
     def __init__(self, number):
-        value = {
-            0 : "Buzz"
-        }
+        super().__init__(number, 3, "Fizz")
 
-        key = number % 5
-        value.setdefault(key, "")
-
-        self.repr = value[key]
+class Buzz(Number):
+    '''
+    Class to represent numbers evenly divisible by 5
+    '''
+    def __init__(self, number):
+        super().__init__(number, 5, "Buzz")
 
 class FizzBuzz():
 
@@ -104,6 +124,7 @@ class FizzBuzz():
         '''
         Using the same rules as translate1, lets use a lambda.
         '''
+        # pylint: disable= unnecessary-lambda-assignment
         value = lambda i: 'Fizz'*(not i % 3)+'Buzz'*(not i % 5) or i
 
         return str(value(number))
@@ -113,7 +134,7 @@ class FizzBuzz():
         Using the same rules as translate1, lets use individual classes to
         avoid if/then's.
         '''
-        value = Fizz(number).repr + Buzz(number).repr or number
+        value = Fizz(number).lu_value() + Buzz(number).lu_value() or number
 
         return str(value)
 
@@ -139,3 +160,12 @@ class FizzBuzz():
             value = f'{number}'
 
         return value
+
+    def translate6(self, number):
+        '''
+        Using the same rules as translate1, lets use individual classes to
+        avoid if/then's.
+        '''
+        value = Fizz(number).get_value() + Buzz(number).get_value() or number
+
+        return str(value)

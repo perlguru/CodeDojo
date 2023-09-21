@@ -53,6 +53,9 @@ def profile():
         for number in range(1, 101):
             FizzBuzz.translate5(number)
 
+        for number in range(1, 101):
+            cut.translate6(number)
+
 if __name__ == "__main__":
     main()
     cProfile.run('profile()')
