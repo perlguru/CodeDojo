@@ -1,1 +1,20 @@
 Nothing here seems to extend upon FizzBuzz
+
+Profiling stats:
+  ncalls   tottime  percall  cumtime  percall filename:lineno(function)
+  1000000    3.219    0.000    8.068    0.000 foobarqix.py:105(number_divide3)
+  1920000    6.807    0.000   16.695    0.000 foobarqix.py:114(digit_substitution3)
+  8760000    3.254    0.000    3.254    0.000 foobarqix.py:12(__init__)
+  1000000    2.885    0.000   17.195    0.000 foobarqix.py:125(digit_substitution2)
+  1000000    1.117    0.000    2.821    0.000 foobarqix.py:141(translate1)
+  1000000    1.437    0.000   19.321    0.000 foobarqix.py:158(translate2)
+  1000000    2.195    0.000   26.958    0.000 foobarqix.py:195(translate3)
+  3000000    1.276    0.000    1.276    0.000 foobarqix.py:22(get_value)
+  5760000    3.046    0.000    3.046    0.000 foobarqix.py:30(subst)
+  2920000    2.437    0.000    3.529    0.000 foobarqix.py:42(__init__)
+  2920000    2.357    0.000    3.438    0.000 foobarqix.py:50(__init__)
+  2920000    2.367    0.000    3.447    0.000 foobarqix.py:58(__init__)
+  2000000    1.288    0.000    1.288    0.000 foobarqix.py:70(number_divide)
+  1000000    1.105    0.000    1.105    0.000 foobarqix.py:88(digit_substitution)
+
+Likely, could be improved with better __init__ management or classmethods?

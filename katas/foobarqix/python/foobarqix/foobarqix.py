@@ -25,7 +25,6 @@ class Number():
         :return: self.word if conditions pass, "" otherwise
         '''
         value = (not self.number % self.divisor) and self.word or ""
-        print("value", value)
         return value
 
     def subst(self, digit):
