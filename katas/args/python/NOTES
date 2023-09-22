@@ -1,0 +1,4 @@
+Extending:
+    Should we use test setup and/or teardown? Same for class setup and/or teardown.
+
+    Explore using @classmethods and class variables ("Hello, world"). Profile alternative methods.
