@@ -19,7 +19,7 @@ class TestFooBarQix:
         cut = FooBarQix()
         assert isinstance(cut, FooBarQix)
 
-    def test_translate(self):
+    def test_translate1(self):
         """
         Intent:
         Given any number we sholud be able to apply the FooBarQix rules to get
@@ -34,19 +34,19 @@ class TestFooBarQix:
         These test should be easily verifable by inspection.
         """
         cut = FooBarQix()
-        assert cut.translate(1) == '1'
-        assert cut.translate(3) == 'FooFoo'
-        assert cut.translate(5) == 'BarBar'
-        assert cut.translate(7) == 'QixQix'
-        assert cut.translate(15) == 'FooBarBar'
-        assert cut.translate(21) == 'FooQix'
-        assert cut.translate(33) == 'FooFooFoo'
-        assert cut.translate(35) == 'BarQixFooBar'
-        assert cut.translate(53) == 'BarFoo'
-        assert cut.translate(105) == 'FooBarQixBar'
-        assert cut.translate(30) == 'FooBarFoo'
-        assert cut.translate(50) == 'BarBar'
-        assert cut.translate(70) == 'BarQixQix'
+        assert cut.translate1(1) == '1'
+        assert cut.translate1(3) == 'FooFoo'
+        assert cut.translate1(5) == 'BarBar'
+        assert cut.translate1(7) == 'QixQix'
+        assert cut.translate1(15) == 'FooBarBar'
+        assert cut.translate1(21) == 'FooQix'
+        assert cut.translate1(33) == 'FooFooFoo'
+        assert cut.translate1(35) == 'BarQixFooBar'
+        assert cut.translate1(53) == 'BarFoo'
+        assert cut.translate1(105) == 'FooBarQixBar'
+        assert cut.translate1(30) == 'FooBarFoo'
+        assert cut.translate1(50) == 'BarBar'
+        assert cut.translate1(70) == 'BarQixQix'
 
     def test_translate2(self):
         """
@@ -69,3 +69,33 @@ class TestFooBarQix:
         assert cut.translate2(303) == 'FooFoo*Foo'
         assert cut.translate2(105) == 'FooBarQix*Bar'
         assert cut.translate2(10101) == 'FooQix**'
+
+    def test_translate3(self):
+        """
+        Intent:
+        Given any number we sholud be able to apply the FooBarQix rules to get
+        a string representation.
+
+        As before, plus:
+
+        101   => 1*1
+        303   => FooFoo*Foo
+        105   => FooBarQix*Bar
+        10101 => FooQix**
+
+        These test should be asily verifable by inspection.
+        """
+        cut = FooBarQix()
+        assert cut.translate3(1) == '1'
+        assert cut.translate3(3) == 'FooFoo'
+        assert cut.translate3(5) == 'BarBar'
+        assert cut.translate3(7) == 'QixQix'
+        assert cut.translate3(15) == 'FooBarBar'
+        assert cut.translate3(21) == 'FooQix'
+        assert cut.translate3(33) == 'FooFooFoo'
+        assert cut.translate3(35) == 'BarQixFooBar'
+        assert cut.translate3(53) == 'BarFoo'
+        assert cut.translate3(105) == 'FooBarQixBar'
+        assert cut.translate3(30) == 'FooBarFoo'
+        assert cut.translate3(50) == 'BarBar'
+        assert cut.translate3(70) == 'BarQixQix'

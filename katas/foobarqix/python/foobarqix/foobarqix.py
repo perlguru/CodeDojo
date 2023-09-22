@@ -5,6 +5,61 @@ The FooBarQix kata written in object oriented fashion.
 
 import re
 
+class Number():
+    '''
+    Super class for Foo, Bar and Qix
+    '''
+    def __init__(self, number, divisor, word):
+        '''
+        :param number: Number under inspection
+        :param divisor: The effective divisor
+        :param word: Replacement word, if needed
+        '''
+        self.number = number
+        self.divisor = divisor
+        self.word = word
+
+    def get_value(self):
+        '''
+        Test condition by boolean comparison (not if's)
+        :return: self.word if conditions pass, "" otherwise
+        '''
+        value = (not self.number % self.divisor) and self.word or ""
+        print("value", value)
+        return value
+
+    def subst(self, digit):
+        '''
+        Test condition by comparing dictionary look up table.
+        :return: self.word if conditions pass, "" otherwise
+        '''
+        value = (int(digit) == self.divisor) and self.word or ""
+        return value
+
+class Foo(Number):
+    '''
+    Class to represent numbers evenly divisible by 3
+    '''
+    def __init__(self, number):
+        super().__init__(number, 3, "Foo")
+
+
+class Bar(Number):
+    '''
+    Class to represent numbers evenly divisible by 3
+    '''
+    def __init__(self, number):
+        super().__init__(number, 5, "Bar")
+
+
+class Qix(Number):
+    '''
+    Class to represent numbers evenly divisible by 7
+    '''
+    def __init__(self, number):
+        super().__init__(number, 7, "Qix")
+
+
 class FooBarQix():
     """
     Very simple class to contain our implementation.
@@ -48,6 +103,26 @@ class FooBarQix():
 
         return value
 
+    def number_divide3(self, number):
+        """
+        Check disivability of number under consideration. Build string
+        representing the divisability.
+        """
+        value = Foo(number).get_value() + Bar(number).get_value() + Qix(number).get_value()
+
+        return value
+
+    def digit_substitution3(self, number):
+        """
+        Per kata rules, substitute word for number where needed
+        """
+        value = ""
+        for digit in str(number):
+            value += Foo(number).subst(digit)
+            value += Bar(number).subst(digit)
+            value += Qix(number).subst(digit)
+        return value
+
     def digit_substitution2(self, value):
         """
         Per kata step 2, substitute words for numbers and 0 with * as needed.
@@ -64,7 +139,7 @@ class FooBarQix():
 
         return value
 
-    def translate(self, number):
+    def translate1(self, number):
         """
         From kata ---
         For any number print the number, unless:
@@ -77,7 +152,7 @@ class FooBarQix():
         value += self.digit_substitution(number)
 
         if not value:
-            value = "{number}"
+            value = str(number)
 
         return value
 
@@ -115,5 +190,23 @@ class FooBarQix():
 
         # Sub translation for number
         value = self.digit_substitution2(value)
+
+        return value
+
+    def translate3(self, number):
+        """
+        From kata ---
+        Same as translate1, but using if reduction.
+        If the number is divisible by 3, write “Foo” instead of the number
+        If the number is divisible by 5, add “Bar”
+        If the number is divisible by 7, add “Qix”
+        For each digit 3, 5, 7, add “Foo”, “Bar”, “Qix” in the digits order.
+        """
+        value = self.number_divide3(number)
+        for digit in str(number):
+            value += self.digit_substitution3(digit)
+
+        if not value:
+            value = str(number)
 
         return value
