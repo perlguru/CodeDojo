@@ -2,6 +2,34 @@
 The MineSweeper kata written in object oriented fashion.
 '''
 
+import random
+class Board():
+    def __init__(self, rows, columns):
+        self.rows = rows
+        self.columns = columns
+
+        board = [[0 for x in range(columns)] for y in range(rows)]
+        for i in range(rows):
+            for j in range(columns):
+                board[i][j] = None
+
+        self.board = board
+
+    def random_board(self, rate=10):
+        for row in range(0, self.rows):
+            for col in range (0, self.columns):
+                r = random.random()
+                self.board[row][col] = ((r > rate / 100) and ".") or "*"
+
+    def set_tile(self, x, y):
+        print(self.board[x][y])
+
+    def print_board(self):
+        for y in range(0, self.columns):
+            for x in range(0, self.rows):
+                print(self.board[x][y], end = "")
+            print()
+
 class MineSweeper():
     '''
     Very simple class to contain our implementation.
@@ -95,3 +123,8 @@ class MineSweeper():
         '''
         for row in range(0, self.height):
             print("".join(str(value) for value in self.solved[row]))
+
+    def my_board(self):
+        self.board = Board(6,7)
+        self.board.random_board()
+        self.board.print_board()

@@ -73,3 +73,8 @@ class TestMineSweeper:
         cut.print_solved()
         captured = capsys.readouterr()
         assert captured.out == BOARD1_SOLVED
+
+    def test_print_board1(self):
+        cut = MineSweeper()
+        cut.my_board()
+        assert 1==0
