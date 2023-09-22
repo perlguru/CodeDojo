@@ -1,25 +1,26 @@
-'''
+# coding=utf-8
+"""
 Test for FooBarQix kata
-'''
+"""
 
 from foobarqix.foobarqix import FooBarQix
 
 class TestFooBarQix:
-    '''
+    """
     Simple class to bundle our test under.
-    '''
+    """
 
     def test_create(self):
-        '''
+        """
         Intent:
         As a matter of style, always test that the class under test can create
         an object.
-        '''
+        """
         cut = FooBarQix()
         assert isinstance(cut, FooBarQix)
 
     def test_translate(self):
-        '''
+        """
         Intent:
         Given any number we sholud be able to apply the FooBarQix rules to get
         a string representation.
@@ -31,7 +32,7 @@ class TestFooBarQix:
         For each digit 3, 5, 7, add “Foo”, “Bar”, “Qix” in the digits order.
 
         These test should be easily verifable by inspection.
-        '''
+        """
         cut = FooBarQix()
         assert cut.translate(1) == '1'
         assert cut.translate(3) == 'FooFoo'
@@ -48,7 +49,7 @@ class TestFooBarQix:
         assert cut.translate(70) == 'BarQixQix'
 
     def test_translate2(self):
-        '''
+        """
         Intent:
         Given any number we sholud be able to apply the FooBarQix rules to get
         a string representation.
@@ -61,7 +62,7 @@ class TestFooBarQix:
         10101 => FooQix**
 
         These test should be asily verifable by inspection.
-        '''
+        """
         cut = FooBarQix()
         print(f"test {cut.translate2(101)}")
         assert cut.translate2(101) == '1*1'

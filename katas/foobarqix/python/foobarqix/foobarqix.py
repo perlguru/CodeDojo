@@ -1,22 +1,23 @@
-'''
+# coding=utf-8
+"""
 The FooBarQix kata written in object oriented fashion.
-'''
+"""
 
 import re
 
 class FooBarQix():
-    '''
+    """
     Very simple class to contain our implementation.
 
     We could have implemented this as classmethods as well, and may do so in the
     future.
-    '''
+    """
 
-    def number_devide(self, number):
-        '''
+    def number_divide(self, number):
+        """
         Check disivability of number under consideration. Build string 
         representing the divisability.
-        '''
+        """
         value = ""
 
         if number % 3 == 0:
@@ -31,9 +32,9 @@ class FooBarQix():
         return value
 
     def digit_substitution(self, number):
-        '''
+        """
         Per kata rules, substitute word for number where needed
-        '''
+        """
         value = ""
         for digit in str(number):
             if digit == "3":
@@ -48,12 +49,12 @@ class FooBarQix():
         return value
 
     def digit_substitution2(self, value):
-        '''
+        """
         Per kata step 2, substitute words for numbers and 0 with * as needed.
-        If substitutions have been made, remove anyother digits.
+        If substitutions have been made, remove any other digits.
 
-        For a different strategy, we will use regular expresion substution.
-        '''
+        For a different strategy, we will use regular expression substitution.
+        """
         value = re.sub('3', "Foo", value)
         value = re.sub('5', "Bar", value)
         value = re.sub('7', "Fix", value)
@@ -64,24 +65,24 @@ class FooBarQix():
         return value
 
     def translate(self, number):
-        '''
+        """
         From kata ---
         For any number print the number, unless:
         If the number is divisible by 3, write “Foo” instead of the number
         If the number is divisible by 5, add “Bar”
         If the number is divisible by 7, add “Qix”
         For each digit 3, 5, 7, add “Foo”, “Bar”, “Qix” in the digits order.
-        '''
-        value = self.number_devide(number)
+        """
+        value = self.number_divide(number)
         value += self.digit_substitution(number)
 
         if not value:
-            value = f'{number}'
+            value = "{number}"
 
         return value
 
     def translate2(self, number):
-        '''
+        """
         From kata (part 2) ---
         As before, but
         We have a new business request: we must keep a trace of 0 in numbers, 
@@ -107,9 +108,9 @@ class FooBarQix():
 
             10101 => FooQix10101
             FooQix10101 =>FooQix**
-        '''
+        """
         # This gets the prefix
-        value = self.number_devide(number) + str(number)
+        value = self.number_divide(number) + str(number)
         # 303 => Foo303
 
         # Sub translation for number
