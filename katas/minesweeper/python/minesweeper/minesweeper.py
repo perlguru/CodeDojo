@@ -1,69 +1,98 @@
-'''
+"""
 The MineSweeper kata written in object oriented fashion.
-'''
+"""
 
 import random
+
 class Board():
-    def __init__(self, rows, columns):
+    """
+    Class to contain a "board's" state, and provide operations on the board,
+    such as statically setting a boards state, random generating a boards
+    state, setting and getting individual tiles state, and calculating
+    neighboring tiles exposure.
+    """
+    def __init__(self, rows=8, columns=8):
+        """
+        Basic Board constructor
+        @param rows: Number of rows for board. Default 8.
+        @param columns: Number of rows for board. Default 8.
+        self.board: The generated board. Each tiles state defaults to None.
+        """
         self.rows = rows
         self.columns = columns
 
-        board = [[0 for x in range(columns)] for y in range(rows)]
+        self.board = [[0 for x in range(columns)] for y in range(rows)]
         for i in range(rows):
             for j in range(columns):
-                board[i][j] = None
+                self.board[i][j] = None
 
-        self.board = board
-
-    def random_board(self, rate=10):
+    def randomize(self, rate=10):
+        """
+        Randomly populate a board.
+        @param rate: Bomb rate in percentage of likely tiles. Default 10.
+        Which means that approximately 10% of the tiles will be bombs
+        """
         for row in range(0, self.rows):
             for col in range (0, self.columns):
                 r = random.random()
                 self.board[row][col] = ((r > rate / 100) and ".") or "*"
 
-    def set_tile(self, x, y):
-        print(self.board[x][y])
-
-    def print_board(self):
+    def display(self):
+        """
+        Display the board to stdout.
+        """
         for y in range(0, self.columns):
             for x in range(0, self.rows):
-                print(self.board[x][y], end = "")
+                print(self.board[x][y], end="")
             print()
 
-class MineSweeper():
-    '''
-    Very simple class to contain our implementation.
-    '''
-    def __init__(self):
-        '''
-        Just set some default values
-        '''
-        self.solved = []
-        self.board = []
-        self.width = 0
-        self.height = 0
+    def get_tile(self, x, y):
+        """
+        Return the value of the tile at x, y
+        @param x: Target column
+        @param y: Target row
+        @return: *, ., or count of adjoining bombs
+        """
+        return self.board[x][y]
 
-    def readfile(self, filename):
-        '''
+    def set_tile(self, x, y, value):
+        """
+        Set the value of the tile at x, y
+        @param x: Target column
+        @param y: Target row
+        """
+        self.board[x][y] = value
+
+    @staticmethod
+    def readfile(filename):
+        """
         Read the string representation from a file
-        '''
-        with open(filename, encoding="utf-8") as msfile:
+        """
+        with open(filename) as msfile:
             lines = [line.rstrip() for line in msfile]
 
         return lines
 
-    def set_height_and_width(self, h_w):
-        '''
-        extract height and width
-        '''
-        self.height = int(h_w[0])
-        self.width = int(h_w[1])
+    def set_board(self, raw):
+        """
+        From our string representation, get height, width and a 2d array of the
+        board
+        """
+        # Consume height and width
+        self.set_rows_and_columns(raw.pop(0).split())
+        self.board = self.build(raw)
 
+    def set_rows_and_columns(self, h_w):
+        """
+        Extract height and width
+        """
+        self.rows = int(h_w[0])
+        self.columns = int(h_w[1])
 
-    def compile_2d_array(self, raw):
-        '''
+    def build(self, raw):
+        """
         Convert string representation to an actual 2d array
-        '''
+        """
         board = []
         for row in raw:
             outrow = []
@@ -72,59 +101,68 @@ class MineSweeper():
             board.append(outrow)
         return board
 
-    def set_board(self, raw):
-        '''
-        From our string representation, get height, width and a 2d array of the
-        board
-        '''
-        # Consume height and width
-        self.set_height_and_width(raw.pop(0).split())
-        self.board = self.compile_2d_array(raw)
-
     def calculate(self):
-        '''
+        """
         Calculate the board
-        '''
-        for row in range(0, self.height):
-            outrow= []
-            for col in range(0, self.width):
-                if self.board[row][col] == '*':
-                    outrow.append("*")
-                if self.board[row][col] == '.':
-                    square = self.calculate_square(col, row)
-                    outrow.append(square)
-            self.solved.append(outrow)
+        """
+        solved = Board(self.rows, self.columns)
+        x = 0
+        for row in self.board:
+            y = 0
+            for col in row:
+                value = col
+                if col == '.':
+                    value = self.calculate_square(y, x)
+                solved.set_tile(x, y, value)
+                y += 1
+            x += 1
+
+        self.solved = solved
 
         return self.solved
 
     # pylint: disable=invalid-name
     def calculate_square(self, x, y):
-        '''
+        """
         Calculate a particular x, y square
-        '''
+        """
         # A lookup table that describes deltas from out x, y
-        square_lut = [[-1, -1], [0, -1], [1, -1], \
-                      [-1,  0],          [1,  0], \
+        square_lut = [[-1, -1], [0, -1], [1, -1],
+                      [-1,  0],          [1,  0],
                       [-1,  1], [0,  1], [1,  1]]
 
         count = 0
         for square in square_lut:
             try:
-                if self.board[y + square[1]][x + square[0]] == "*":
+                if self.get_tile([y + square[1]][0], [x + square[0]][0]) == "*":
                     count += 1
             except IndexError:
                 pass
 
         return count
 
-    def print_solved(self):
-        '''
-        Just print it out
-        '''
-        for row in range(0, self.height):
-            print("".join(str(value) for value in self.solved[row]))
 
-    def my_board(self):
-        self.board = Board(6,7)
-        self.board.random_board()
-        self.board.print_board()
+    def print_solved(self):
+        """
+        Just print it out
+        """
+        for row in self.solved.board:
+            print("".join(str(value) for value in row))
+
+
+class MineSweeper():
+    """
+    Very simple class to contain our implementation.
+    """
+    def __init__(self, rows=8, columns=8):
+        """
+        Just set some default values
+        @rtype: object
+        """
+        self.solved = []
+        self.board = Board(rows, columns)
+
+    def gen_board(self, rows=8, columns=8, rate=10):
+        self.board.randomize(rate)
+
+        self.solved = self.board.calculate()
