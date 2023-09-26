@@ -4,6 +4,11 @@ The MineSweeper kata written in object oriented fashion.
 
 import random
 
+# A lookup table that describes deltas from our x, y
+RING_LUT = [[-1, -1], [0, -1], [1, -1],
+            [-1, 0],           [1,  0],
+            [-1, 1],  [0,  1], [1,  1]]
+
 class Board():
     """
     Class to contain a "board's" state, and provide operations on the board,
@@ -26,6 +31,26 @@ class Board():
             for j in range(columns):
                 self.board[i][j] = None
 
+    def set_size(self, h_w):
+        """
+        Extract height and width
+        """
+        self.rows = int(h_w[0])
+        self.columns = int(h_w[1])
+
+    def build(self, raw):
+        """
+        Convert string representation to an actual 2d array
+        """
+        board = []
+        for row in raw:
+            outrow = []
+            for col in str(row):
+                outrow.append(col)
+            board.append(outrow)
+
+        return board
+
     def randomize(self, rate=10):
         """
         Randomly populate a board.
@@ -35,7 +60,7 @@ class Board():
         for row in range(0, self.rows):
             for col in range (0, self.columns):
                 r = random.random()
-                self.board[row][col] = ((r > rate / 100) and ".") or "*"
+                self.set_tile(row, col, r > rate / 100 and "." or "*")
 
     def display(self):
         """
@@ -43,7 +68,7 @@ class Board():
         """
         for y in range(0, self.columns):
             for x in range(0, self.rows):
-                print(self.board[x][y], end="")
+                print(self.get_tile(x, y), end="")
             print()
 
     def get_tile(self, x, y):
@@ -79,27 +104,8 @@ class Board():
         board
         """
         # Consume height and width
-        self.set_rows_and_columns(raw.pop(0).split())
+        self.set_size(raw.pop(0).split())
         self.board = self.build(raw)
-
-    def set_rows_and_columns(self, h_w):
-        """
-        Extract height and width
-        """
-        self.rows = int(h_w[0])
-        self.columns = int(h_w[1])
-
-    def build(self, raw):
-        """
-        Convert string representation to an actual 2d array
-        """
-        board = []
-        for row in raw:
-            outrow = []
-            for col in str(row):
-                outrow.append(col)
-            board.append(outrow)
-        return board
 
     def calculate(self):
         """
@@ -121,18 +127,14 @@ class Board():
 
         return self.solved
 
+    # x and y make sense
     # pylint: disable=invalid-name
     def calculate_square(self, x, y):
         """
         Calculate a particular x, y square
         """
-        # A lookup table that describes deltas from out x, y
-        square_lut = [[-1, -1], [0, -1], [1, -1],
-                      [-1,  0],          [1,  0],
-                      [-1,  1], [0,  1], [1,  1]]
-
         count = 0
-        for square in square_lut:
+        for square in RING_LUT:
             try:
                 if self.get_tile([y + square[1]][0], [x + square[0]][0]) == "*":
                     count += 1
@@ -159,10 +161,28 @@ class MineSweeper():
         Just set some default values
         @rtype: object
         """
-        self.solved = []
-        self.board = Board(rows, columns)
+        self._board = Board(rows, columns)
+        self._solved = Board(rows, columns)
 
-    def gen_board(self, rows=8, columns=8, rate=10):
-        self.board.randomize(rate)
+    def board(self):
+        """
+        Accessor for board object
+        """
+        return self._board
 
-        self.solved = self.board.calculate()
+    def solved(self):
+        """
+        Accessor for solved object
+        """
+        return self._solved
+
+    def gen_board(self, rate=10):
+        """
+        Randomly populate a preexisting board with a certain rate of mines.
+        Also generates the solution board.
+        @param rate: Rate of bombs. For example, 10 would be 10% bombs to
+        90% safe tiles.
+        @return: None
+        """
+        self._board.randomize(rate)
+        self._solved = self.board().calculate()

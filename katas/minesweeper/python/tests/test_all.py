@@ -32,6 +32,11 @@ class TestBoard:
 
     def test_set_board(self):
         """
+        Intent:
+        For testing we need to be able to det the state of a board. In practice
+        we would use gen_board. Also the kata suggest we take a board
+        definition from a file.
+
         Test that we can generate a 2d representation of the board
         """
         cut = Board()
@@ -47,6 +52,9 @@ class TestBoard:
 
     def test_readfile(self):
         """
+        Intent:
+        Ensure we can read a "state" file and produce the right representation.
+
         Just need to read the file
         """
         cut = Board()
@@ -66,14 +74,20 @@ class TestBoard:
             """
             cut = MineSweeper()
             assert isinstance(cut, MineSweeper)
-            assert cut.board.rows == 8
-            assert cut.board.columns == 8
-            assert isinstance(cut.board, Board)
-            assert not cut.solved
+            assert cut.board().rows == 8
+            assert cut.board().columns == 8
+            assert isinstance(cut.board(), Board)
+            assert cut.solved().rows == 8
+            assert cut.solved().columns == 8
+            assert isinstance(cut.solved(), Board)
 
         def test_calculate(self):
             """
-            Test that we can solve a simple puzzle
+            Intent:
+            When we "calculate" a board the corresponding "solved" board should
+            represent either bombs or the number of adjacent tiles with bombs.
+
+            Test that we can solve (calculate) a simple puzzle
             """
             cut = Board()
             cut.set_board(cut.readfile("tests\\data\\board1.ms"))
@@ -85,17 +99,24 @@ class TestBoard:
 
         def test_print_solved(self, capsys):
             """
+            Intent:
+            Really only need for testing that we can see a "solved" board
+
             Not that interesting, but included for completeness.
             """
             cut = Board()
             cut.set_board(cut.readfile("tests\\data\\board1.ms"))
             cut.calculate()
-#            cut.solved.display()
             cut.print_solved()
             captured = capsys.readouterr()
             assert captured.out == BOARD1_SOLVED
 
         def test_gen_board(self):
+            """
+            Intent:
+            In a real game, we should be able to generate a random board of a
+            given size.
+            """
             cut = MineSweeper()
             cut.gen_board()
-            assert isinstance(cut.board, Board)
+            assert isinstance(cut.board(), Board)
