@@ -23,8 +23,8 @@ class Board():
         @param columns: Number of rows for board. Default 8.
         self.board: The generated board. Each tiles state defaults to None.
         """
-        self.rows = rows
-        self.columns = columns
+        self._rows = rows
+        self._columns = columns
 
         self.board = [[0 for x in range(columns)] for y in range(rows)]
         for i in range(rows):
@@ -35,8 +35,8 @@ class Board():
         """
         Extract height and width
         """
-        self.rows = int(h_w[0])
-        self.columns = int(h_w[1])
+        self._rows = int(h_w[0])
+        self._columns = int(h_w[1])
 
     def build(self, raw):
         """
@@ -57,8 +57,8 @@ class Board():
         @param rate: Bomb rate in percentage of likely tiles. Default 10.
         Which means that approximately 10% of the tiles will be bombs
         """
-        for row in range(0, self.rows):
-            for col in range (0, self.columns):
+        for row in range(0, self._rows):
+            for col in range (0, self._columns):
                 r = random.random()
                 self.set_tile(row, col, r > rate / 100 and "." or "*")
 
@@ -66,10 +66,24 @@ class Board():
         """
         Display the board to stdout.
         """
-        for y in range(0, self.columns):
-            for x in range(0, self.rows):
+        for x in range(0, self._rows):
+            for y in range(0, self._columns):
                 print(self.get_tile(x, y), end="")
             print()
+
+    def rows(self):
+        """
+        Accessor for number of rows
+        @return: Number of rows
+        """
+        return self._rows
+
+    def columns(self):
+        """
+        Accessor for number of columns
+        @return: Number of columns
+        """
+        return self._columns
 
     def get_tile(self, x, y):
         """
@@ -111,14 +125,14 @@ class Board():
         """
         Calculate the board
         """
-        solved = Board(self.rows, self.columns)
+        solved = Board(self._rows, self._columns)
         x = 0
         for row in self.board:
             y = 0
             for col in row:
                 value = col
                 if col == '.':
-                    value = self.calculate_square(y, x)
+                    value = self.calculate_square(x, y)
                 solved.set_tile(x, y, value)
                 y += 1
             x += 1
@@ -136,7 +150,7 @@ class Board():
         count = 0
         for square in RING_LUT:
             try:
-                if self.get_tile([y + square[1]][0], [x + square[0]][0]) == "*":
+                if self.get_tile([x + square[0]][0], [y + square[1]][0]) == "*":
                     count += 1
             except IndexError:
                 pass
@@ -185,4 +199,4 @@ class MineSweeper():
         @return: None
         """
         self._board.randomize(rate)
-        self._solved = self.board().calculate()
+        self._solved = self._board.calculate()
